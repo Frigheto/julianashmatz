@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materiais Adaptados para Estudantes Autistas | Continuum</title>
+    <meta name="description" content="Atividades educacionais estruturadas com metodologia ABA para crianças autistas.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #1a1a1a;
+            --bg-darker: #0f0f0f;
+            --bg-light: #2a2a2a;
+            --accent: #FFB800;
+            --accent-dark: #FFA000;
+            --text-white: #FFFFFF;
+            --text-gray: #B4B4B4;
+            --text-light: #E5E5E5;
+            --border: #333333;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-darker);
+            color: var(--text-white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 0 80px;
+            background: var(--bg-dark);
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0.3;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 184, 0, 0.1);
+            border: 1px solid rgba(255, 184, 0, 0.2);
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 32px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.125rem, 2vw, 1.5rem);
+            color: var(--text-gray);
+            max-width: 650px;
+            margin-bottom: 48px;
+            font-weight: 400;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 18px 40px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg-dark);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(255, 184, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-white);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 64px;
+        }
+
+        /* Trust Line */
+        .trust-line {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .trust-item svg {
+            width: 20px;
+            height: 20px;
+            color: var(--accent);
+        }
+
+        /* Section */
+        section {
+            padding: 120px 0;
+        }
+
+        .section-dark {
+            background: var(--bg-darker);
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-description {
+            font-size: 1.25rem;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin-bottom: 64px;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-top: 64px;
+        }
+
+        .card {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 184, 0, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 24px;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        /* Feature List */
+        .feature-list {
+            display: grid;
+            gap: 24px;
+            margin-top: 64px;
+        }
+
+        .feature-item {
+            display: grid;
+            grid-template-columns: 48px 1fr;
+            gap: 24px;
+            padding: 32px;
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            border-color: var(--accent);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 184, 0, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .feature-content h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .feature-content p {
+            color: var(--text-gray);
+        }
+
+        /* Materials Grid */
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 64px;
+        }
+
+        .material-card {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .material-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .material-header {
+            padding: 32px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .material-emoji {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .material-header h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .material-body {
+            padding: 32px;
+        }
+
+        .material-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            text-align: center;
+            margin: 24px 0;
+        }
+
+        .material-price small {
+            font-size: 1.25rem;
+        }
+
+        .material-body {
+            padding: 32px;
+        }
+
+        .material-description {
+            color: var(--text-gray);
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+
+        .material-features {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .material-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
+        .material-feature::before {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 48px;
+            margin-top: 64px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-gray);
+        }
+
+        /* Offer Box */
+        .offer-box {
+            max-width: 700px;
+            margin: 64px auto 0;
+            background: var(--bg-light);
+            border: 1px solid var(--accent);
+            border-radius: 16px;
+            padding: 64px;
+            text-align: center;
+        }
+
+        .price-container {
+            margin-bottom: 48px;
+        }
+
+        .price-label {
+            font-size: 14px;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .price-value {
+            font-size: 5rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .price-value small {
+            font-size: 2rem;
+        }
+
+        .price-note {
+            font-size: 14px;
+            color: var(--text-gray);
+            margin-top: 12px;
+        }
+
+        .offer-features {
+            background: rgba(255, 184, 0, 0.05);
+            border: 1px solid rgba(255, 184, 0, 0.2);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 40px;
+        }
+
+        .offer-feature {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 12px 0;
+            font-size: 1rem;
+        }
+
+        .offer-feature::before {
+            content: '✓';
+            width: 24px;
+            height: 24px;
+            background: var(--accent);
+            color: var(--bg-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* FAQ */
+        .faq-container {
+            max-width: 800px;
+            margin: 64px auto 0;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 32px 0;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            gap: 24px;
+        }
+
+        .faq-question h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .faq-toggle {
+            width: 32px;
+            height: 32px;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: var(--accent);
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: var(--text-gray);
+            padding-top: 0;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding-top: 16px;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        /* Author */
+        .author-box {
+            max-width: 800px;
+            margin: 64px auto 0;
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 40px;
+            align-items: center;
+            padding: 48px;
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .author-avatar {
+            width: 150px;
+            height: 150px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            font-weight: 800;
+            color: var(--bg-dark);
+        }
+
+        .author-name {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .author-title {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .author-bio {
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        /* Guarantee */
+        .guarantee-box {
+            max-width: 800px;
+            margin: 64px auto 0;
+            padding: 48px;
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .guarantee-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 184, 0, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin: 0 auto 24px;
+        }
+
+        .guarantee-box h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .guarantee-box p {
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            padding: 80px 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        footer p {
+            color: var(--text-gray);
+            margin-bottom: 8px;
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 56px;
+            height: 56px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        .whatsapp-float svg {
+            width: 28px;
+            height: 28px;
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 80px 0 60px;
+            }
+
+            section {
+                padding: 80px 0;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .author-box {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 24px;
+            }
+
+            .author-avatar {
+                margin: 0 auto;
+            }
+
+            .offer-box,
+            .guarantee-box {
+                padding: 32px 24px;
+            }
+
+            .cards-grid,
+            .materials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+                    <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319z"/>
+                </svg>
+                Metodologia ABA Comprovada
+            </div>
+            
+            <h1>
+                Materiais Adaptados<br>
+                para Estudantes <span>Autistas</span>
+            </h1>
+            
+            <p class="hero-subtitle">
+                Atividades estruturadas e visuais que facilitam a aprendizagem e alfabetização para crianças no espectro autista. Baseado em evidências científicas.
+            </p>
+            
+            <div class="cta-group">
+                <a href="#oferta" class="btn btn-primary">Começar Agora</a>
+                <a href="#materiais" class="btn btn-secondary">Ver Materiais</a>
+            </div>
+
+            <div class="trust-line">
+                <div class="trust-item">
+                    <svg fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    PDFs Prontos
+                </div>
+                <div class="trust-item">
+                    <svg fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    Acesso Imediato
+                </div>
+                <div class="trust-item">
+                    <svg fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    Garantia Total
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem -->
+    <section class="section-dark">
+        <div class="container">
+            <span class="section-tag">O Desafio</span>
+            <h2 class="section-title">Por Que Materiais<br>Tradicionais Não Funcionam</h2>
+            <p class="section-description">
+                Crianças autistas processam informações de forma diferente. Elas precisam de estrutura, previsibilidade e apoio visual intensivo.
+            </p>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">⚡</div>
+                    <h3>Sobrecarga Sensorial</h3>
+                    <p>Múltiplas informações simultâneas causam confusão e dificultam o foco e a compreensão.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">📚</div>
+                    <h3>Materiais Inadequados</h3>
+                    <p>A maioria dos recursos didáticos não considera as necessidades específicas de processamento.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">🎯</div>
+                    <h3>Falta de Estrutura</h3>
+                    <p>Instruções ambíguas geram frustração e dificultam o entendimento das expectativas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution -->
+    <section>
+        <div class="container">
+            <span class="section-tag">A Solução</span>
+            <h2 class="section-title">Desenvolvido Para<br>Facilitar o Aprendizado</h2>
+            
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-icon">📋</div>
+                    <div class="feature-content">
+                        <h4>Cartões de Tarefas Estruturados</h4>
+                        <p>Instruções claras e objetivas em formato de cartão, eliminando ambiguidades e facilitando a compreensão.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">👁️</div>
+                    <div class="feature-content">
+                        <h4>Suporte Visual Completo</h4>
+                        <p>Representações visuais em todos os conceitos, facilitando a compreensão e memorização.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">🔢</div>
+                    <div class="feature-content">
+                        <h4>Uma Informação Por Vez</h4>
+                        <p>Foco em apenas um conceito por atividade, evitando sobrecarga cognitiva e aumentando o sucesso.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">📊</div>
+                    <div class="feature-content">
+                        <h4>Sistema de Registro ABA</h4>
+                        <p>Folhas para acompanhar progresso e ajustar estratégias baseadas em dados reais.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Materials -->
+    <section class="section-dark" id="materiais">
+        <div class="container">
+            <span class="section-tag">O Que Você Recebe</span>
+            <h2 class="section-title">5 Materiais Completos</h2>
+            
+            <div class="materials-grid">
+                <div class="material-card">
+                    <div class="material-header">
+                        <div class="material-emoji">🍕</div>
+                        <h3>Pizza Matemática</h3>
+                    </div>
+                    <div class="material-body">
+                        <p class="material-description">
+                            Ensino de frações com metáfora visual concreta. Identifique numerador e denominador de forma intuitiva.
+                        </p>
+                        <div class="material-features">
+                            <div class="material-feature">Frações visuais</div>
+                            <div class="material-feature">Conceito de inteiro</div>
+                            <div class="material-feature">Registro ABA incluso</div>
+                        </div>
+                        <div class="material-price">
+                            <small>R$</small> 30,00
+                        </div>
+                        <a href="https://pay.hotmart.com/T103582283U" class="btn btn-primary" style="width: 100%; text-align: center;">Comprar Agora</a>
+                    </div>
+                </div>
+
+                <div class="material-card">
+                    <div class="material-header">
+                        <div class="material-emoji">✖️</div>
+                        <h3>Multiplicação Visual</h3>
+                    </div>
+                    <div class="material-body">
+                        <p class="material-description">
+                            Tabuada visual completa com elementos contáveis que tornam a multiplicação concreta.
+                        </p>
+                        <div class="material-features">
+                            <div class="material-feature">Tabela 1 a 10</div>
+                            <div class="material-feature">Elementos visuais</div>
+                            <div class="material-feature">Memorização facilitada</div>
+                        </div>
+                        <div class="material-price">
+                            <small>R$</small> 30,00
+                        </div>
+                        <a href="https://pay.hotmart.com/I103582353H" class="btn btn-primary" style="width: 100%; text-align: center;">Comprar Agora</a>
+                    </div>
+                </div>
+
+                <div class="material-card">
+                    <div class="material-header">
+                        <div class="material-emoji">🔤</div>
+                        <h3>Lendo e Contando 1</h3>
+                    </div>
+                    <div class="material-body">
+                        <p class="material-description">
+                            Integração de alfabetização e matemática usando sistema de coordenadas com sílabas.
+                        </p>
+                        <div class="material-features">
+                            <div class="material-feature">Coordenadas visuais</div>
+                            <div class="material-feature">Sílabas organizadas</div>
+                            <div class="material-feature">Progressão gradual</div>
+                        </div>
+                        <div class="material-price">
+                            <small>R$</small> 30,00
+                        </div>
+                        <a href="https://pay.hotmart.com/O103582382D" class="btn btn-primary" style="width: 100%; text-align: center;">Comprar Agora</a>
+                    </div>
+                </div>
+
+                <div class="material-card">
+                    <div class="material-header">
+                        <div class="material-emoji">🔢</div>
+                        <h3>Lendo e Contando 2</h3>
+                    </div>
+                    <div class="material-body">
+                        <p class="material-description">
+                            Versão avançada com alfabeto completo e exercícios complexos de coordenadas.
+                        </p>
+                        <div class="material-features">
+                            <div class="material-feature">Alfabeto A-Z</div>
+                            <div class="material-feature">Múltiplas etapas</div>
+                            <div class="material-feature">Complexidade crescente</div>
+                        </div>
+                        <div class="material-price">
+                            <small>R$</small> 30,00
+                        </div>
+                        <a href="https://pay.hotmart.com/N103582422X" class="btn btn-primary" style="width: 100%; text-align: center;">Comprar Agora</a>
+                    </div>
+                </div>
+
+                <div class="material-card">
+                    <div class="material-header">
+                        <div class="material-emoji">➕</div>
+                        <h3>Soma e Subtração</h3>
+                    </div>
+                    <div class="material-body">
+                        <p class="material-description">
+                            Operações básicas com elementos visuais contáveis para facilitar o entendimento.
+                        </p>
+                        <div class="material-features">
+                            <div class="material-feature">Operações visuais</div>
+                            <div class="material-feature">Elementos contáveis</div>
+                            <div class="material-feature">Prática estruturada</div>
+                        </div>
+                        <div class="material-price">
+                            <small>R$</small> 30,00
+                        </div>
+                        <a href="https://pay.hotmart.com/N103582446B" class="btn btn-primary" style="width: 100%; text-align: center;">Comprar Agora</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section>
+        <div class="container">
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Baseado em Evidências</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Materiais Completos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">PDF</div>
+                    <div class="stat-label">Pronto para Usar</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">ABA</div>
+                    <div class="stat-label">Metodologia Comprovada</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Author -->
+    <section class="section-dark">
+        <div class="container">
+            <span class="section-tag">Quem Criou</span>
+            <h2 class="section-title">Desenvolvido por Especialista</h2>
+            
+            <div class="author-box">
+                <div class="author-avatar">JS</div>
+                <div class="author-content">
+                    <div class="author-name">Juliana Schmatz</div>
+                    <div class="author-title">Continuum Assessoria Educacional</div>
+                    <p class="author-bio">
+                        Especialista em Análise do Comportamento Aplicada (ABA) e educação de estudantes autistas. Materiais desenvolvidos com base em evidências científicas e testados em contextos reais.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee -->
+    <section>
+        <div class="container">
+            <span class="section-tag">Garantia</span>
+            <h2 class="section-title">100% Livre de Riscos</h2>
+            
+            <div class="guarantee-box">
+                <div class="guarantee-icon">✓</div>
+                <h3>Garantia Total de Satisfação</h3>
+                <p>
+                    Se você não ficar completamente satisfeito com os materiais, oferecemos reembolso total dentro do prazo da plataforma. Sem perguntas, sem complicações.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offer -->
+    <section class="section-dark" id="oferta">
+        <div class="container">
+            <span class="section-tag">Escolha Seu Material</span>
+            <h2 class="section-title">Escolha os Materiais<br>Que Você Precisa</h2>
+            
+            <div style="max-width: 700px; margin: 48px auto 0; text-align: center;">
+                <p style="font-size: 1.25rem; color: var(--text-gray); margin-bottom: 40px;">
+                    Cada material está disponível individualmente por <strong style="color: var(--accent);">R$ 30,00</strong>. 
+                    Escolha o que melhor atende às necessidades do seu aluno ou filho e comece a transformar o aprendizado hoje mesmo.
+                </p>
+                
+                <a href="#materiais" class="btn btn-primary" style="font-size: 18px; padding: 20px 48px;">Ver Todos os Materiais</a>
+                
+                <p style="margin-top: 32px; font-size: 14px; color: var(--text-gray);">
+                    🔒 Pagamento 100% Seguro via Hotmart<br>
+                    ✓ Acesso imediato após a compra<br>
+                    ✓ Garantia de satisfação total
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section>
+        <div class="container">
+            <span class="section-tag">Dúvidas</span>
+            <h2 class="section-title">Perguntas Frequentes</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
+                        <h4>Para qual faixa etária são indicados?</h4>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        Adequados para crianças entre 6 e 12 anos, mas podem ser adaptados conforme o nível de desenvolvimento individual.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
+                        <h4>Preciso ter experiência com ABA?</h4>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        Não é necessário. Os materiais incluem instruções claras e folhas de registro que facilitam a aplicação.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
+                        <h4>Funciona apenas para autistas?</h4>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        Desenvolvidos para autistas, mas beneficiam qualquer criança que aprenda melhor com estrutura visual e instruções claras.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
+                        <h4>Como recebo os materiais?</h4>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        Imediatamente após o pagamento, você recebe email com link para download dos PDFs.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
+                        <h4>Posso usar profissionalmente?</h4>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        Sim! Professores, terapeutas e psicopedagogos podem usar em suas práticas.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2024 Continuum Assessoria Educacional</p>
+            <p>Campos Borges, RS - Brasil</p>
+            <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="573d223b3e3639367924343f3a36232d173f38233a363e3b7934383a">[email&#160;protected]</a></p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp -->
+    <a href="https://wa.me/5555996713708" class="whatsapp-float" target="_blank">
+        <svg fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+    </a>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        function toggleFAQ(element) {
+            const isActive = element.classList.contains('active');
+            
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            if (!isActive) {
+                element.classList.add('active');
+            }
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if
