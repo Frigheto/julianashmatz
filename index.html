@@ -1353,7 +1353,7 @@
     <section class="hero">
         <!-- Vídeo de Fundo -->
         <div class="hero-video-bg">
-            <video autoplay muted loop playsinline>
+            <video id="hero-bg-video" muted loop playsinline preload="none">
                 <source src="assets/videos/hero-background.mp4" type="video/mp4">
                 <source src="assets/videos/hero-background.webm" type="video/webm">
             </video>
@@ -2194,4 +2194,32 @@
                     target.scrollIntoView({ behavior: 'smooth' });
                 }
             });
+        });
+
+        // Lazy-load do vídeo do hero para melhorar performance
+        window.addEventListener('DOMContentLoaded', () => {
+            const heroSection = document.querySelector('.hero');
+            const video = document.getElementById('hero-bg-video');
+            if (!heroSection || !video) return;
+
+            const startVideo = () => {
+                try {
+                    // Força o carregamento apenas quando necessário
+                    video.preload = 'auto';
+                    video.load();
+                    const playPromise = video.play();
+                    if (playPromise && typeof playPromise.then === 'function') {
+                        playPromise.catch(() => {/* ignora bloqueios de autoplay */});
+                    }
+                } catch (err) { /* silencioso */ }
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                if (entries.some(e => e.isIntersecting)) {
+                    startVideo();
+                    observer.disconnect();
+                }
+            }, { root: null, threshold: 0.1 });
+
+            observer.observe(heroSection);
         });
