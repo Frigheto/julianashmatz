@@ -1353,7 +1353,7 @@
     <section class="hero">
         <!-- Vídeo de Fundo -->
         <div class="hero-video-bg">
-            <video id="hero-bg-video" muted loop playsinline preload="metadata">
+            <video id="hero-bg-video" autoplay muted loop playsinline preload="auto">
                 <source src="assets/videos/hero-background.mp4" type="video/mp4">
             </video>
         </div>
@@ -2195,29 +2195,32 @@
             });
         });
 
-        // Lazy-load do vídeo do hero para melhorar performance
+        // Auto-start do vídeo do hero
         window.addEventListener('DOMContentLoaded', () => {
             const video = document.getElementById('hero-bg-video');
             if (!video) return;
 
-            const startVideo = () => {
-                try {
-                    video.preload = 'auto';
-                    video.load();
-                    const playPromise = video.play();
-                    if (playPromise && typeof playPromise.then === 'function') {
-                        playPromise.catch(() => {/* ignora bloqueios de autoplay */});
-                    }
-                } catch (err) { /* silencioso */ }
+            // Força o play do vídeo
+            const forcePlay = () => {
+                video.play().catch(err => {
+                    console.log('Autoplay bloqueado, tentando novamente...', err);
+                    // Tenta novamente após interação do usuário
+                    document.addEventListener('click', () => {
+                        video.play().catch(() => {});
+                    }, { once: true });
+                });
             };
 
-            // Tenta iniciar o vídeo imediatamente
-            startVideo();
+            // Tenta iniciar quando os metadados carregarem
+            video.addEventListener('loadedmetadata', forcePlay);
             
-            // Fallback: tenta novamente após um pequeno delay
+            // Tenta imediatamente também
+            forcePlay();
+            
+            // Garante que está rodando após 500ms
             setTimeout(() => {
                 if (video.paused) {
-                    startVideo();
+                    forcePlay();
                 }
-            }, 1000);
+            }, 500);
         });
