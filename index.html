@@ -1353,9 +1353,8 @@
     <section class="hero">
         <!-- Vídeo de Fundo -->
         <div class="hero-video-bg">
-            <video id="hero-bg-video" muted loop playsinline preload="none">
+            <video id="hero-bg-video" muted loop playsinline preload="metadata">
                 <source src="assets/videos/hero-background.mp4" type="video/mp4">
-                <source src="assets/videos/hero-background.webm" type="video/webm">
             </video>
         </div>
 
@@ -2198,13 +2197,11 @@
 
         // Lazy-load do vídeo do hero para melhorar performance
         window.addEventListener('DOMContentLoaded', () => {
-            const heroSection = document.querySelector('.hero');
             const video = document.getElementById('hero-bg-video');
-            if (!heroSection || !video) return;
+            if (!video) return;
 
             const startVideo = () => {
                 try {
-                    // Força o carregamento apenas quando necessário
                     video.preload = 'auto';
                     video.load();
                     const playPromise = video.play();
@@ -2214,12 +2211,13 @@
                 } catch (err) { /* silencioso */ }
             };
 
-            const observer = new IntersectionObserver((entries) => {
-                if (entries.some(e => e.isIntersecting)) {
+            // Tenta iniciar o vídeo imediatamente
+            startVideo();
+            
+            // Fallback: tenta novamente após um pequeno delay
+            setTimeout(() => {
+                if (video.paused) {
                     startVideo();
-                    observer.disconnect();
                 }
-            }, { root: null, threshold: 0.1 });
-
-            observer.observe(heroSection);
+            }, 1000);
         });
